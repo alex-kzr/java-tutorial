@@ -1,0 +1,1 @@
+Add application configuration in IntellijIdea

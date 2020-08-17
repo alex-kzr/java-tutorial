@@ -1,7 +1,9 @@
 public class Main {
     public static void main(String[] args){
-        Car toyota = new Car();
-        System.out.println(toyota.maxSpeed);
-        System.out.println(toyota.numOfSeats);
+        Vehicle someVehicle = new Vehicle();
+        Vehicle toyota = new Car();
+
+        System.out.println(someVehicle.getMaxSpeed());
+        System.out.println(toyota.getMaxSpeed());
     }
 }

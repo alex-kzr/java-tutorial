@@ -1,3 +1,7 @@
 public class Person {
-    public String name = "Alex"; // bad practice according to OOP
+    private String name = "Alex";
+
+    public String getName() {
+        return name;
+    }
 }

@@ -11,13 +11,12 @@ public class HelloWorld {
     char c = 'c';
 
     // Non-primitive types
-    //HelloWorld helloWorld = new HelloWorld(); // instance of class
+    Car car = new Car(); // object type
 
     public static void main(String[] args){
 
-        HelloWorld helloWorld1 = new HelloWorld(); // instance of class
-
-
-        System.out.println(helloWorld1.i);
+        HelloWorld helloWorld = new HelloWorld();
+        helloWorld.car.maxSpeed = 100;
+        System.out.println(helloWorld.car.maxSpeed);
     }
 }

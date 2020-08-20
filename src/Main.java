@@ -20,5 +20,6 @@ public class Main {
         new Main();
         new Main(5);
         new Main("hello");
+        new ExampleClass();
     }
 }

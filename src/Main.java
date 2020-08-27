@@ -18,4 +18,16 @@ public class Main {
 class Car {
     int maxSpeed;
     Main main;
+
+    public static final String TEXT_ID = "123";
+
+    private final String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
+
+//    private void test() {
+//        name = "new name"; // compile error
+//    }
 }

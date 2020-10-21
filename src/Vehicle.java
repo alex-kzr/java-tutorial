@@ -4,4 +4,8 @@ public class Vehicle {
     int getMaxSpeed(){
         return maxSpeed;
     }
+
+    public void drive(){
+        System.out.println("Drive with regular speed");
+    }
 }

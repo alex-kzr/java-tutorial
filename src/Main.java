@@ -3,5 +3,6 @@ public class Main {
         Car toyota = new Car();
         System.out.println(toyota.maxSpeed);
         System.out.println(toyota.numOfSeats);
+        toyota.drive();
     }
 }

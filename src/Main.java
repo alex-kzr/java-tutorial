@@ -10,7 +10,7 @@ public class Main {
         File textFile = new File("file.txt");
 
         try {
-            Scanner scanner = new Scanner(textFile);
+            Scanner scanner = new Scanner(textFile, "UTF-8");
 
             int lineNumber = 1;
             while(scanner.hasNextLine()){

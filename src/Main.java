@@ -1,8 +1,10 @@
 public class Main {
     public static void main(String[] args){
         CarFactory carFactory = new CarFactory();
+
         Car toyota = (Car) carFactory.create("Toyota");
         Car audi = (Car) carFactory.create("Audi");
+        Car noname = (Car) carFactory.create("noname");
         toyota.drive();
         audi.drive();
     }
@@ -37,7 +39,8 @@ class CarFactory<Car> {
         switch (typeOfCar) {
             case "Toyota" : return (Car) new Toyota();
             case "Audi" : return (Car) new Audi();
-            default : return null;
         }
+
+        throw new RuntimeException("Factory " + typeOfCar + " not identified ");
     }
 }

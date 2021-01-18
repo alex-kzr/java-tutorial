@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args){
-        Factory factory = new Factory();
-        Car toyota = factory.create("Toyota");
-        Car audi = factory.create("Audi");
+        CarFactory carFactory = new CarFactory();
+        Car toyota = (Car) carFactory.create("Toyota");
+        Car audi = (Car) carFactory.create("Audi");
         toyota.drive();
         audi.drive();
     }
@@ -28,11 +28,15 @@ class Audi implements Car {
     }
 }
 
-class Factory {
+interface Factory<Type> {
+    Type create(String typeofProduct);
+}
+
+class CarFactory<Car> {
     public Car create(String typeOfCar) {
         switch (typeOfCar) {
-            case "Toyota" : return new Toyota();
-            case "Audi" : return new Audi();
+            case "Toyota" : return (Car) new Toyota();
+            case "Audi" : return (Car) new Audi();
             default : return null;
         }
     }

@@ -1,10 +1,10 @@
 public class Main {
     public static void main(String[] args){
-        CarFactory carFactory = new CarFactory();
+        CarCreator carCreator = new CarCreator();
 
-        Car toyota = (Car) carFactory.create("Toyota");
-        Car audi = (Car) carFactory.create("Audi");
-        Car noname = (Car) carFactory.create("noname");
+        Car toyota = (Car) carCreator.create("Toyota");
+        Car audi = (Car) carCreator.create("Audi");
+        Car noname = (Car) carCreator.create("noname");
         toyota.drive();
         audi.drive();
     }
@@ -30,11 +30,11 @@ class Audi implements Car {
     }
 }
 
-interface Factory<Type> {
+interface Creator<Type> {
     Type create(String typeofProduct);
 }
 
-class CarFactory<Car> {
+class CarCreator<Car> {
     public Car create(String typeOfCar) {
         switch (typeOfCar) {
             case "Toyota" : return (Car) new Toyota();

@@ -6,8 +6,8 @@ public class Main {
 }
 
 class Controller {
-    ModelLayer modelLayer = new DBLayer();
-    View view = new ConsoleView();
+    ModelLayer modelLayer = new FileLayer();
+    View view = new HtmlView();
 
     void execute() {
         Student student = modelLayer.getStudent();
@@ -20,6 +20,14 @@ interface ModelLayer {
 }
 
 class DBLayer implements ModelLayer {
+
+    @Override
+    public Student getStudent() {
+        return new Student();
+    }
+}
+
+class FileLayer implements ModelLayer {
 
     @Override
     public Student getStudent() {
@@ -65,5 +73,13 @@ class ConsoleView implements View {
     @Override
     public void showStudent(Student student) {
         System.out.println("Student name: " + student.getName() + " age: " + student.getAge());
+    }
+}
+
+class HtmlView implements View {
+
+    @Override
+    public void showStudent(Student student) {
+        System.out.println("<html><body>Student name: " + student.getName() + " age: " + student.getAge() + "</body></html>");
     }
 }

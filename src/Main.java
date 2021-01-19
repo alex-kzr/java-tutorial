@@ -1,12 +1,10 @@
-import javax.xml.bind.annotation.XmlType;
 
 public class Main {
     public static void main(String[] args){
-        Car car = new CarBuilder()
-                .buildBrand("Mercedes-Benz")
-                .buildTransmission(Transmission.AUTO)
-                .buildMaxSpeed(255)
-                .build();
+
+        Director director = new Director();
+        director.setCarBuilder(new HondaCivicBuilder());
+        Car car = director.buildCar();
 
         System.out.println(car);
     }
@@ -43,37 +41,64 @@ enum Transmission {
     MANUAL, AUTO
 }
 
-class CarBuilder {
-    static final String DEFAULT_BRAND = "Noname";
-    static final Transmission DEFAULT_TRANSMISSION = Transmission.AUTO;
-    static final int DEFAULT_MAX_SPEED = 160;
-
-    String brand = DEFAULT_BRAND;
-    Transmission transmission = DEFAULT_TRANSMISSION;
-    int maxSpeed = DEFAULT_MAX_SPEED;
-
-    CarBuilder buildBrand(String brand) {
-        this.brand = brand;
-        return this;
+abstract class CarBuilder {
+    Car car;
+    void createCar() {
+        this.car = new Car();
     }
 
-    CarBuilder buildTransmission(Transmission transmission) {
-        this.transmission = transmission;
-        return this;
+    abstract void buildBrand();
+    abstract void buildTransmission();
+    abstract void buildMaxSpeed();
+
+    Car getCar(){
+        return car;
+    }
+}
+
+class NissanMarchBuilder extends CarBuilder {
+
+    void buildBrand() {
+        car.setBrand("Nissan March");
     }
 
-    CarBuilder buildMaxSpeed(int maxSpeed) {
-        this.maxSpeed = maxSpeed;
-        return this;
+    void buildTransmission() {
+        car.setTransmission(Transmission.AUTO);
     }
 
-    Car build() {
-        Car car = new Car();
+    void buildMaxSpeed() {
+        car.setMaxSpeed(183);
+    }
+}
 
-        car.setBrand(brand);
-        car.setTransmission(transmission);
-        car.setMaxSpeed(maxSpeed);
+class HondaCivicBuilder extends CarBuilder {
 
+    void buildBrand() {
+        car.setBrand("Honda Civic");
+    }
+
+    void buildTransmission() {
+        car.setTransmission(Transmission.AUTO);
+    }
+
+    void buildMaxSpeed() {
+        car.setMaxSpeed(270);
+    }
+}
+
+class Director {
+    CarBuilder carBuilder;
+    void setCarBuilder(CarBuilder carBuilder) {
+        this.carBuilder = carBuilder;
+    }
+
+    Car buildCar() {
+        carBuilder.createCar();
+
+        carBuilder.buildBrand();
+        carBuilder.buildTransmission();
+        carBuilder.buildMaxSpeed();
+        Car car = carBuilder.getCar();
         return car;
     }
 }

@@ -20,7 +20,8 @@ public class Main {
 
 class Singleton {
 
-    private static Singleton instance;
+    // initialization will create instance only once and we dont need to check instance existence in the constructor
+    private static Singleton instance = new Singleton();
 
     private static int counter = 0;
 
@@ -29,11 +30,6 @@ class Singleton {
     }
 
     public static Singleton getInstance(){
-
-        if (instance == null) {
-            instance = new Singleton();
-        }
-
         return instance;
     }
 

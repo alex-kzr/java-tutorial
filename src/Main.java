@@ -1,11 +1,17 @@
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
 
-        final int ARRAY_SIZE = 1000;
-        Singleton array[] = new Singleton[ARRAY_SIZE];
+        final int INSTANCES_SIZE = 1000;
 
-        for (int i = 0; i<ARRAY_SIZE; i++) {
-            array[i] = Singleton.getInstance();
+        Thread thread[] = new Thread[INSTANCES_SIZE];
+
+        // several thread keep up to create several instances
+        for (int i = 0; i < INSTANCES_SIZE; i++) {
+            thread[i] = new Thread(new ThreadRunner());
+            thread[i].start();
+        }
+        for (int i = 0; i < INSTANCES_SIZE; i++) {
+            thread[i].join();
         }
 
         System.out.println(Singleton.getCounter());
@@ -33,5 +39,13 @@ class Singleton {
 
     public static int getCounter() {
         return counter;
+    }
+}
+
+class ThreadRunner implements Runnable {
+
+    @Override
+    public void run() {
+        Singleton.getInstance();
     }
 }

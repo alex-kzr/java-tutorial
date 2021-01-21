@@ -20,7 +20,7 @@ public class Main {
 
 class Singleton {
 
-    private static Singleton instance;
+    private static volatile Singleton instance;
 
     private static int counter = 0;
 
@@ -28,11 +28,17 @@ class Singleton {
         counter++;
     }
 
-    // lazy initialization with synchronized accessor
-    public static synchronized Singleton getInstance(){
+    public static Singleton getInstance(){
 
         if (instance == null) {
-            instance = new Singleton();
+
+            // synchronized access with double check
+            synchronized (Singleton.class) {
+
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
         }
 
         return instance;

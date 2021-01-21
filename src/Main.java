@@ -20,8 +20,7 @@ public class Main {
 
 class Singleton {
 
-    // initialization will create instance only once and we dont need to check instance existence in the constructor
-    private static Singleton instance = new Singleton();
+    private static Singleton instance;
 
     private static int counter = 0;
 
@@ -29,9 +28,16 @@ class Singleton {
         counter++;
     }
 
-    public static Singleton getInstance(){
+    // lazy initialization with synchronized accessor
+    public static synchronized Singleton getInstance(){
+
+        if (instance == null) {
+            instance = new Singleton();
+        }
+
         return instance;
     }
+
 
     public static int getCounter() {
         return counter;

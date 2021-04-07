@@ -1,20 +1,11 @@
-@MyAnnotation
+@MethodInfo(dateOfCreation = 2021, purpose = "Print Hello World")
 public class Main {
-    @MyAnnotation
-    private String name;
-
-    @MyAnnotation
-    public void myMethod1() {
-
-    }
-
-    @MyAnnotation
-    public void myMethod2(@MyAnnotation int value) {
-        @MyAnnotation String localVar = "Hello";
-    }
-
-    MyAnnotation
     public static void main(String[] args){
         
+    }
+
+    @MethodInfo(author = "Alex", dateOfCreation = 2021, purpose = "Print Hello World")
+    public void helloWorld () {
+        System.out.println("Hello world!");
     }
 }

@@ -1,10 +1,10 @@
 interface Executable {
-    int execute(int x);
+    int execute(int x, int y);
 }
 
 class Runner {
     public void run(Executable executable) {
-        int e = executable.execute(100);
+        int e = executable.execute(100, 1000);
         System.out.println(e);
     }
 }
@@ -15,11 +15,11 @@ public class Main {
 
         runner.run(new Executable() {
             @Override
-            public int execute(int x) {
-                return 1 + x;
+            public int execute(int x, int y) {
+                return x + y;
             }
         });
 
-        runner.run(x -> 10 + x);
+        runner.run((x, y) -> y - x);
     }
 }

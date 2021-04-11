@@ -8,26 +8,21 @@ class Runner {
     }
 }
 
-class ExecutableImplementation implements Executable {
-    @Override
-    public void execute() {
-        System.out.println("Execute from declared class");
-    }
-}
-
 public class Main {
     public static void main(String[] args){
         Runner runner = new Runner();
 
-        runner.run(new ExecutableImplementation());
-
         runner.run(new Executable() {
             @Override
             public void execute() {
-                System.out.println("Execute from anonymous interface implementation");
+                System.out.println("Start execute from anonymous interface implementation");
+                System.out.println("End execute from anonymous interface implementation");
             }
         });
 
-        runner.run(() -> System.out.println("Execute from lambda"));
+        runner.run(() -> {
+            System.out.println("Start execute from lambda");
+            System.out.println("End execute from lambda");
+        });
     }
 }

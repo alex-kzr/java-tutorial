@@ -20,8 +20,6 @@ public class Main {
             }
         });
 
-        runner.run(() -> {
-            return 10;
-        });
+        runner.run(() -> 10);
     }
 }

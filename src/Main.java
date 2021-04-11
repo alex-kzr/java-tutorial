@@ -1,10 +1,11 @@
 interface Executable {
-    void execute();
+    int execute();
 }
 
 class Runner {
     public void run(Executable executable) {
-        executable.execute();
+        int e = executable.execute();
+        System.out.println(e);
     }
 }
 
@@ -14,15 +15,13 @@ public class Main {
 
         runner.run(new Executable() {
             @Override
-            public void execute() {
-                System.out.println("Start execute from anonymous interface implementation");
-                System.out.println("End execute from anonymous interface implementation");
+            public int execute() {
+                return 1;
             }
         });
 
         runner.run(() -> {
-            System.out.println("Start execute from lambda");
-            System.out.println("End execute from lambda");
+            return 10;
         });
     }
 }

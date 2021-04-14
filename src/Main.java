@@ -35,8 +35,8 @@ public class Main {
         System.out.println(list2);
 
         //forEach method
-        Arrays.stream(arr2).forEach(a -> System.out.println(a));
-        list2.stream().forEach(a -> System.out.println(a));
+        Arrays.stream(arr2).forEach(System.out::println);
+        list2.stream().forEach(System.out::println);
     }
 
     private static void fillArr(int[] arr) {

@@ -33,6 +33,10 @@ public class Main {
 
         System.out.println(Arrays.toString(arr2));
         System.out.println(list2);
+
+        //forEach method
+        Arrays.stream(arr2).forEach(a -> System.out.println(a));
+        list2.stream().forEach(a -> System.out.println(a));
     }
 
     private static void fillArr(int[] arr) {

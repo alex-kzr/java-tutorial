@@ -45,7 +45,7 @@ public class Main {
         fillArr(arr3);
         fillList(list3);
 
-        int sum = Arrays.stream(arr3).reduce((accumulator, a) -> accumulator + a).getAsInt();
+        int sum = Arrays.stream(arr3).reduce(5, (accumulator, a) -> accumulator + a);
         int multi = list3.stream().reduce((accumulator, a) -> accumulator * a).get();
 
         System.out.println(sum);

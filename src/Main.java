@@ -37,6 +37,19 @@ public class Main {
         //forEach method
         Arrays.stream(arr2).forEach(System.out::println);
         list2.stream().forEach(System.out::println);
+
+        //reduce method
+        int[] arr3 = new int[10];
+        List<Integer> list3 = new ArrayList<>();
+
+        fillArr(arr3);
+        fillList(list3);
+
+        int sum = Arrays.stream(arr3).reduce((accumulator, a) -> accumulator + a).getAsInt();
+        int multi = list3.stream().reduce((accumulator, a) -> accumulator * a).get();
+
+        System.out.println(sum);
+        System.out.println(multi);
     }
 
     private static void fillArr(int[] arr) {

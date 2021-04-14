@@ -50,6 +50,14 @@ public class Main {
 
         System.out.println(sum);
         System.out.println(multi);
+
+        //methods chain
+        int[] arr4 = new int[10];
+
+        fillArr(arr4);
+
+        int[] newArray = Arrays.stream(arr4).filter(a -> a % 2 == 0).map(a -> a * 2).toArray();
+        System.out.println(Arrays.toString(newArray));
     }
 
     private static void fillArr(int[] arr) {

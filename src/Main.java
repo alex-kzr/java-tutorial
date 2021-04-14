@@ -20,6 +20,19 @@ public class Main {
 
         System.out.println(Arrays.toString(arr));
         System.out.println(list);
+
+        //filter method
+        int[] arr2 = new int[10];
+        List<Integer> list2 = new ArrayList<>();
+
+        fillArr(arr2);
+        fillList(list2);
+
+        arr2 = Arrays.stream(arr2).filter(a -> a % 2 == 0).toArray();
+        list2 = list2.stream().filter(a -> a % 2 == 0).collect(Collectors.toList());
+
+        System.out.println(Arrays.toString(arr2));
+        System.out.println(list2);
     }
 
     private static void fillArr(int[] arr) {

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args){
@@ -13,10 +14,9 @@ public class Main {
         System.out.println(Arrays.toString(arr));
         System.out.println(list);
 
-        for (int i = 0; i < 10; i++) {
-            arr[i] = arr[i] * 2;
-            list.set(i, list.get(i) * 2);
-        }
+        // map method
+        arr = Arrays.stream(arr).map(a -> a * 2).toArray();
+        list =  list.stream().map(a -> a * 2).collect(Collectors.toList());
 
         System.out.println(Arrays.toString(arr));
         System.out.println(list);
